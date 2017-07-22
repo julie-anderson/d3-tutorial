@@ -20,6 +20,7 @@ var rScale = d3.scaleLinear()
     .domain([0, d3.max(dataset, function(d) { return d[1]; })])
     .range([2,5]);
 
+
 //Create SVG element
 var svg = d3.select("body")
     .append("svg")
@@ -56,3 +57,15 @@ svg.selectAll("text")
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
     .attr("fill", "red");
+
+var xAxis = d3.axisBottom(xScale);
+var yAxis = d3.axisLeft(yScale);
+
+svg.append("g")
+    .attr("transform", "translate(0, " + (h-padding) + ")")
+    .call(xAxis);
+
+svg.append("g")
+    .attr("transform", "translate("+ padding +",0)")
+    .call(yAxis);
+
